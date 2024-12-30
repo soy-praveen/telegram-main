@@ -1,0 +1,262 @@
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            height: 100vh;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            --c: #09f;
+            background-color: #000;
+            background-image: 
+                radial-gradient(4px 100px at 0px 235px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 235px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 117.5px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 252px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 252px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 126px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 150px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 150px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 75px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 253px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 253px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 126.5px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 204px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 204px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 102px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 134px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 134px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 67px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 179px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 179px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 89.5px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 299px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 299px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 149.5px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 215px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 215px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 107.5px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 281px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 281px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 140.5px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 158px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 158px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 79px, var(--c) 100%, #0000 150%),
+                radial-gradient(4px 100px at 0px 210px, var(--c), #0000),
+                radial-gradient(4px 100px at 300px 210px, var(--c), #0000),
+                radial-gradient(1.5px 1.5px at 150px 105px, var(--c) 100%, #0000 150%);
+            background-size: 300px 235px, 300px 235px, 300px 235px, 300px 252px, 300px 252px, 300px 252px, 300px 150px, 300px 150px, 300px 150px, 300px 253px, 300px 253px, 300px 253px, 300px 204px, 300px 204px, 300px 204px, 300px 134px, 300px 134px, 300px 134px, 300px 179px, 300px 179px, 300px 179px, 300px 299px, 300px 299px, 300px 299px, 300px 215px, 300px 215px, 300px 215px, 300px 281px, 300px 281px, 300px 281px, 300px 158px, 300px 158px, 300px 158px, 300px 210px, 300px 210px, 300px 210px;
+            animation: hi 150s linear infinite;
+        }
+
+        @keyframes hi {
+            0% {
+                background-position: 0px 220px, 3px 220px, 151.5px 337.5px, 25px 24px, 28px 24px, 176.5px 150px, 50px 16px, 53px 16px, 201.5px 91px, 75px 224px, 78px 224px, 226.5px 350.5px, 100px 19px, 103px 19px, 251.5px 121px, 125px 120px, 128px 120px, 276.5px 187px, 150px 31px, 153px 31px, 301.5px 120.5px, 175px 235px, 178px 235px, 326.5px 384.5px, 200px 121px, 203px 121px, 351.5px 228.5px, 225px 224px, 228px 224px, 376.5px 364.5px, 250px 26px, 253px 26px, 401.5px 105px, 275px 75px, 278px 75px, 426.5px 180px;
+            }
+            to {
+                background-position: 0px 6800px, 3px 6800px, 151.5px 6917.5px, 25px 13632px, 28px 13632px, 176.5px 13758px, 50px 5416px, 53px 5416px, 201.5px 5491px, 75px 17175px, 78px 17175px, 226.5px 17301.5px, 100px 5119px, 103px 5119px, 251.5px 5221px, 125px 8428px, 128px 8428px, 276.5px 8495px, 150px 9876px, 153px 9876px, 301.5px 9965.5px, 175px 13391px, 178px 13391px, 326.5px 13540.5px, 200px 14741px, 203px 14741px, 351.5px 14848.5px, 225px 18770px, 228px 18770px, 376.5px 18910.5px, 250px 5082px, 253px 5082px, 401.5px 5161px, 275px 6375px, 278px 6375px, 426.5px 6480px;
+            }
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background-image: radial-gradient(circle at 50% 50%, #0000 0, #0000 2px, hsl(0 0 4%) 2px);
+            background-size: 8px 8px;
+            --f: blur(1em) brightness(6);
+            animation: hii 10s linear infinite;
+        }
+
+        @keyframes hii {
+            0% {
+                backdrop-filter: var(--f) hue-rotate(0deg);
+            }
+            to {
+                backdrop-filter: var(--f) hue-rotate(360deg);
+            }
+        }
+
+        /* Card Container */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #121212;
+            background: linear-gradient(135deg, #121212 25%, #1a1a1a 25%, #1a1a1a 50%, #121212 50%, #121212 75%, #1a1a1a 75%, #1a1a1a);
+            background-size: 40px 40px;
+            animation: move 4s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 40px 40px;
+            }
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        /* Paragraph */
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #e1e1e1;
+        }
+
+        /* Image Styling */
+/* From Uiverse.io by Smit-Prajapati */ 
+.loader {
+    --size: 50%;
+    --duration: 2s;
+    --logo-color: grey;
+    --background: linear-gradient(
+        0deg,
+        rgba(50, 50, 50, 0.2) 0%,
+        rgba(100, 100, 100, 0.2) 100%
+    );
+    height: var(--size);
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.loader .box {
+    position: absolute;
+    background: rgba(100, 100, 100, 0.15);
+    background: var(--background);
+    border-radius: 50%;
+    border-top: 1px solid rgba(100, 100, 100, 1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 5px -2px;  /* Adjusted box-shadow for smaller ripple */
+    backdrop-filter: blur(5px);
+    animation: ripple var(--duration) infinite ease-in-out;
+}
+
+.loader .box:nth-child(1) {
+    inset: 25%;
+    z-index: 99;
+}
+
+.loader .box:nth-child(2) {
+    inset: 20%;
+    z-index: 98;
+    border-color: rgba(100, 100, 100, 0.8);
+    animation-delay: 0.2s;
+}
+
+.loader .box:nth-child(3) {
+    inset: 15%;
+    z-index: 97;
+    border-color: rgba(100, 100, 100, 0.6);
+    animation-delay: 0.4s;
+}
+
+.loader .box:nth-child(4) {
+    inset: 10%;
+    z-index: 96;
+    border-color: rgba(100, 100, 100, 0.4);
+    animation-delay: 0.6s;
+}
+
+
+
+.loader .logo {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    padding: 20%;
+}
+
+.loader .coin-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: coin-animation var(--duration) infinite ease-in-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 5px -2px; /* Adjusted size and position */
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 10px -5px; /* Reduced shadow distance */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 5px -2px; /* Reset shadow */
+    }
+}
+
+@keyframes coin-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);  /* Reduced scale for the coin animation */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+        /* Button Styling */
+        button {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 75, 43,0);
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 75, 43, 0);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        
