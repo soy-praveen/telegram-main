@@ -1,7 +1,7 @@
-// src/pages/IntroPage.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate from react-router-dom
 import '../styles/IntroPage.css';
+import coinImage from '../styles/coin.png';  // Import the image
 
 function IntroPage() {
   const navigate = useNavigate();  // Initialize navigate function
@@ -15,7 +15,7 @@ function IntroPage() {
       <div className="loader">
         <div className="box">
           <div className="logo">
-            <img src="/coin.png" alt="Coin Image" className="coin-image" />
+            <img src={coinImage} alt="Coin Image" className="coin-image" />  {/* Use the imported image */}
           </div>
         </div>
         <div className="box"></div>
