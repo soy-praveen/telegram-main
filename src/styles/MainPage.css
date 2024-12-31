@@ -1,159 +1,190 @@
-/* MainPage.css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
-.dark-theme {
-  background: #1a1a1a;
-  color: #fff;
-  min-height: 100vh;
-}
-
+/* Overall container styling */
 .app-container {
-  max-width: 600px;
+  width: 100%;
+  max-width: 1200px;  /* Optional: Adjust to your desired max width */
   margin: 0 auto;
   padding: 20px;
-  padding-bottom: 80px;
-  position: relative;
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
+/* Center content */
 .content {
-  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  overflow: hidden; /* Prevents overflow */
 }
 
+/* Balance card styling */
 .balance-card {
-  background: linear-gradient(145deg, #2a2a2a, #333);
-  border-radius: 15px;
+  background-color: #f1f1f1;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Adjust the width as needed */
   text-align: center;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.balance-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .balance {
-  font-size: 36px;
+  font-size: 2rem;
   font-weight: bold;
-  color: #2eff8c;
-  margin: 10px 0;
-  text-shadow: 0 0 10px rgba(46, 255, 140, 0.3);
+  color: #4CAF50;
 }
 
 .button-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
   gap: 10px;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .button {
-  background: rgba(46, 255, 140, 0.1);
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 12px 20px;
-  border-radius: 10px;
-  color: #2eff8c;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .button:hover {
-  background: rgba(46, 255, 140, 0.2);
+  background-color: #45a049;
 }
 
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #2a2a2a;
+/* Leaderboard section styling */
+.leaderboard-item {
   display: flex;
-  justify-content: space-around;
-  padding: 15px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 12px;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px; /* Adjust width */
 }
 
-.nav-item svg {
-  margin-bottom: 5px;
+.rank {
+  font-weight: bold;
 }
 
-.nav-item.active {
-  color: #2eff8c;
+.friend-info {
+  text-align: right;
 }
 
+.friend-info div {
+  font-size: 1rem;
+}
+
+.friend-status {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Friends section styling */
 .friend-item {
   display: flex;
   align-items: center;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  margin-bottom: 10px;
-  transition: all 0.3s ease;
-}
-
-.friend-item:hover {
-  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px; /* Adjust width */
 }
 
 .friend-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .friend-info {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.friend-info div {
+  font-size: 1rem;
 }
 
 .friend-status {
-  font-size: 12px;
-  color: #aaa;
+  font-size: 0.8rem;
+  color: #888;
 }
 
+/* Bottom navigation styling */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav-item {
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.nav-item.active {
+  color: #4CAF50;
+}
+
+.nav-item svg {
+  margin-bottom: 5px;
+}
+
+/* Modal styling */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background: #333;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
   text-align: center;
-  color: #fff;
 }
 
-.modal button {
+.modal-content button {
   margin-top: 20px;
-  background: #2eff8c;
-  color: #fff;
-  border: none;
+  background-color: #4CAF50;
+  color: white;
   padding: 10px 20px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.modal button:hover {
-  background: #25b57d;
+.modal-content button:hover {
+  background-color: #45a049;
 }
