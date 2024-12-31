@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './MainPage.css';
-
+import '../styles/MainPage.css';
 const MainPage = () => {
   // State management
   const [activeTab, setActiveTab] = useState('home');
