@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/MainPage.css';
+
 const MainPage = () => {
   // State management
   const [activeTab, setActiveTab] = useState('home');
@@ -110,69 +111,71 @@ const MainPage = () => {
   };
 
   return (
-    <div className="app-container">
-      <div className="content">
-        {activeTab === 'home' && renderHome()}
-        {activeTab === 'leaderboard' && renderLeaderboard()}
-        {activeTab === 'friends' && renderFriends()}
+    <div className="container"> {/* This is the container wrapping everything */}
+      <div className="app-container">
+        <div className="content">
+          {activeTab === 'home' && renderHome()}
+          {activeTab === 'leaderboard' && renderLeaderboard()}
+          {activeTab === 'friends' && renderFriends()}
+        </div>
+
+        <nav className="bottom-nav">
+          <div
+            className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
+            onClick={() => switchTab('home')}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+          </div>
+          <div
+            className={`nav-item ${activeTab === 'leaderboard' ? 'active' : ''}`}
+            onClick={() => switchTab('leaderboard')}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"></path>
+              <path d="M15 7a4 4 0 1 0-8 0"></path>
+              <path d="M19 14l-2-2 2-2 2 2-2 2z"></path>
+            </svg>
+            Leaderboard
+          </div>
+          <div
+            className={`nav-item ${activeTab === 'friends' ? 'active' : ''}`}
+            onClick={() => switchTab('friends')}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Friends
+          </div>
+        </nav>
+
+        {/* Modals */}
+        {isRewardsModalOpen && (
+          <div className="modal">
+            <div className="modal-content">
+              <h2>🎁 Rewards</h2>
+              <p>Coming soon!</p>
+              <button onClick={() => setIsRewardsModalOpen(false)}>Close</button>
+            </div>
+          </div>
+        )}
+
+        {isRoadmapModalOpen && (
+          <div className="modal">
+            <div className="modal-content">
+              <h2>🗺 Footprint Map</h2>
+              <p>Your journey will be displayed here soon!</p>
+              <button onClick={() => setIsRoadmapModalOpen(false)}>Close</button>
+            </div>
+          </div>
+        )}
       </div>
-
-      <nav className="bottom-nav">
-        <div
-          className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
-          onClick={() => switchTab('home')}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-          </svg>
-          Home
-        </div>
-        <div
-          className={`nav-item ${activeTab === 'leaderboard' ? 'active' : ''}`}
-          onClick={() => switchTab('leaderboard')}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"></path>
-            <path d="M15 7a4 4 0 1 0-8 0"></path>
-            <path d="M19 14l-2-2 2-2 2 2-2 2z"></path>
-          </svg>
-          Leaderboard
-        </div>
-        <div
-          className={`nav-item ${activeTab === 'friends' ? 'active' : ''}`}
-          onClick={() => switchTab('friends')}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-          Friends
-        </div>
-      </nav>
-
-      {/* Modals */}
-      {isRewardsModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>🎁 Rewards</h2>
-            <p>Coming soon!</p>
-            <button onClick={() => setIsRewardsModalOpen(false)}>Close</button>
-          </div>
-        </div>
-      )}
-
-      {isRoadmapModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>🗺 Footprint Map</h2>
-            <p>Your journey will be displayed here soon!</p>
-            <button onClick={() => setIsRoadmapModalOpen(false)}>Close</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
