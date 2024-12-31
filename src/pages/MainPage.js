@@ -1,101 +1,179 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/MainPage.css';
-
-const API_BASE_URL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001';
+import React, { useState } from 'react';
+import './MainPage.css';
 
 const MainPage = () => {
-  const [user, setUser] = useState({
-    photo_url: 'https://www.example.com/default-profile.jpg',
-    username: 'TestUser',
-    userId: null,
-    referralCount: 0,
-    vicTokens: 0,
-    referralLink: ''
-  });
+  // State management
+  const [activeTab, setActiveTab] = useState('home');
+  const [isRewardsModalOpen, setIsRewardsModalOpen] = useState(false);
+  const [isRoadmapModalOpen, setIsRoadmapModalOpen] = useState(false);
 
-  useEffect(() => {
-    const initTelegramWebApp = async () => {
-      try {
-        if (window.Telegram?.WebApp) {
-          const webApp = window.Telegram.WebApp;
-          await webApp.ready();
-          
-          const userInfo = webApp.initDataUnsafe.user;
-          if (userInfo) {
-            // First, check if this is a referral
-            const urlParams = new URLSearchParams(window.location.search);
-            const startParam = urlParams.get('start');
-            
-            if (startParam) {
-              // Process referral
-              await fetch(`${API_BASE_URL}/api/check-referral`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  newUserId: userInfo.id,
-                  startParam: startParam
-                })
-              });
-            }
-  
-            // Get or create user in database
-            const response = await fetch(`${API_BASE_URL}/api/users`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                userId: userInfo.id,
-                username: userInfo.username,
-                photo_url: userInfo.photo_url
-              })
-            });
-  
-            const userData = await response.json();
-            
-            setUser({
-              photo_url: userInfo.photo_url || 'https://www.example.com/default-profile.jpg',
-              username: userInfo.username || 'No Username',
-              userId: userInfo.id,
-              referralCount: userData.referralCount,
-              vicTokens: userData.vicTokens,
-              referralLink: `https://t.me/VictoryAirdropBot?start=ref_${userInfo.id}`
-            });
-          }
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-  
-    initTelegramWebApp();
-  }, []);
-  const copyReferralLink = () => {
-    navigator.clipboard.writeText(user.referralLink);
-    alert('Referral link copied to clipboard!');
+  const state = {
+    balance: 1250,
+    leaderboard: [
+      { rank: 1, name: 'Sarah J.', balance: 5230 },
+      { rank: 2, name: 'Mike R.', balance: 4150 },
+      { rank: 3, name: 'David K.', balance: 3890 },
+    ],
+    friends: [
+      {
+        name: 'Alice Chen',
+        status: 'Earning',
+        avatar:
+          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+      },
+      {
+        name: 'Bob Smith',
+        status: 'Active',
+        avatar:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150',
+      },
+      {
+        name: 'Carol Wu',
+        status: 'Inactive',
+        avatar:
+          'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
+      },
+    ],
+  };
+
+  const renderHome = () => {
+    return (
+      <div>
+        <div className="balance-card">
+          <h2>Your Balance</h2>
+          <div className="balance">{state.balance} VIC</div>
+          <div>Rank: Gold</div>
+        </div>
+        <div className="button-container">
+          <button className="button" onClick={() => setIsRewardsModalOpen(true)}>
+            Check Rewards
+          </button>
+          <button
+            className="button"
+            onClick={() => window.open('https://t.me/vic_community')}
+          >
+            Join Community
+          </button>
+          <button
+            className="button"
+            onClick={() => setIsRoadmapModalOpen(true)}
+          >
+            View Footprint Map
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderLeaderboard = () => {
+    return (
+      <div>
+        <h2>🏆 Leaderboard</h2>
+        {state.leaderboard.map((user) => (
+          <div className="leaderboard-item" key={user.rank}>
+            <div className="rank">#{user.rank}</div>
+            <div className="friend-info">
+              <div>{user.name}</div>
+              <small>{user.balance} VIC</small>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const renderFriends = () => {
+    return (
+      <div>
+        <h2>👥 Friends</h2>
+        <div className="button-container">
+          <button className="button">Add Friends</button>
+        </div>
+        {state.friends.map((friend, index) => (
+          <div className="friend-item" key={index}>
+            <img
+              src={friend.avatar}
+              alt={friend.name}
+              className="friend-avatar"
+            />
+            <div className="friend-info">
+              <div>{friend.name}</div>
+              <div className="friend-status">{friend.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const switchTab = (tab) => {
+    setActiveTab(tab);
   };
 
   return (
-    <div className="container">
-      <div className="profile-card">
-        <div className="profile-header">
-          <img
-            src={user.photo_url}
-            alt="Profile Picture"
-            className="user-pfp"
-          />
-          <h2 id="username">{user.username}</h2>
-        </div>
-        <div className="tokens-info">
-          <p>{user.vicTokens.toLocaleString()} VIC Tokens</p>
-          <p>Referral Count: {user.referralCount}</p>
-        </div>
-        <div className="refer-friends">
-          <button onClick={copyReferralLink}>Copy Referral Link</button>
-        </div>
+    <div className="app-container">
+      <div className="content">
+        {activeTab === 'home' && renderHome()}
+        {activeTab === 'leaderboard' && renderLeaderboard()}
+        {activeTab === 'friends' && renderFriends()}
       </div>
+
+      <nav className="bottom-nav">
+        <div
+          className={`nav-item ${activeTab === 'home' ? 'active' : ''}`}
+          onClick={() => switchTab('home')}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Home
+        </div>
+        <div
+          className={`nav-item ${activeTab === 'leaderboard' ? 'active' : ''}`}
+          onClick={() => switchTab('leaderboard')}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"></path>
+            <path d="M15 7a4 4 0 1 0-8 0"></path>
+            <path d="M19 14l-2-2 2-2 2 2-2 2z"></path>
+          </svg>
+          Leaderboard
+        </div>
+        <div
+          className={`nav-item ${activeTab === 'friends' ? 'active' : ''}`}
+          onClick={() => switchTab('friends')}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          Friends
+        </div>
+      </nav>
+
+      {/* Modals */}
+      {isRewardsModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>🎁 Rewards</h2>
+            <p>Coming soon!</p>
+            <button onClick={() => setIsRewardsModalOpen(false)}>Close</button>
+          </div>
+        </div>
+      )}
+
+      {isRoadmapModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>🗺 Footprint Map</h2>
+            <p>Your journey will be displayed here soon!</p>
+            <button onClick={() => setIsRoadmapModalOpen(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
